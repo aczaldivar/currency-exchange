@@ -38,10 +38,10 @@ class Currency:
         return Currency.__add__(self, other)
 
     def __radd__(self, other):
-        res = self + other
+        ex = self + other
         if self.unit != "USD":
-            res.changeTo("USD")
-        return res
+           ex.changeTo("USD")
+        return ex
 
     def __sub__(self, other):
         if type(other) == int or type(other) == float:
@@ -55,11 +55,11 @@ class Currency:
         return Currency.__sub__(self, other)
 
     def __rsub__(self, other):
-        res = other - self.value
-        res = Currency(res, self.unit)
+        ex = other - self.value
+        ex = Currency(ex, self.unit)
         if self.unit != "USD":
-            res.changeTo("USD")
-        return res
+            ex.changeTo("USD")
+        return ex
 
 
 v1 = Currency(23.43, "EUR")
